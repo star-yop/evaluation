@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" 
+  url      = env("DATABASE_URL")
+}
+
+model Evaluation {
+  id          String   @id @default(uuid())
+  courseId    String
+  userId      String
+  answers     Json
+  score       Float
+  passed      Boolean
+  createdAt   DateTime @default(now())
+}
